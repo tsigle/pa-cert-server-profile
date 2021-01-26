@@ -10,7 +10,7 @@ apk add --no-cache openssl
 SSL_KEYPAIR_PASSWORD=$( openssl rand -base64 32 )
 
 #encode and save the certificate
-SSL_KEYPAIR=$( openssl pkcs12 -export -inkey /run/secrets/internal-cert/tls.key -in /run/secrets/internal-cert/tls.crt -password pass:${SSL_KEYPAIR_PASSWORD} | base64 )
+SSL_KEYPAIR=$( openssl pkcs12 -export -inkey /run/secrets/internal-cert/tls.key -in /run/secrets/internal-cert/tls.crt -password pass:${SSL_KEYPAIR_PASSWORD} | base64 -w 0 )
 
 #ugly
 echo ${SSL_KEYPAIR_PASSWORD} >> /dev/null
