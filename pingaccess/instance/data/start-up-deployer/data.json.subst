@@ -221,7 +221,7 @@
                 "id": 4,
                 "alias": "HELM GENERATED CERT",
                 "fileData": "${SSL_KEYPAIR}",
-                "passowrd": {
+                "password": {
                     "value": "${SSL_KEYPAIR_PASSWORD}"
                 },
                 "hsmProviderId": 0
