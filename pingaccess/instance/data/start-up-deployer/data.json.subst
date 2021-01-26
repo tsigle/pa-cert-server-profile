@@ -218,10 +218,12 @@
                 "hsmProviderId": 0
             },
             {
-                "id":4,
+                "id": 4,
                 "alias": "HELM GENERATED CERT",
                 "fileData": "${SSL_KEYPAIR}",
-                "passowrd": "${SSL_KEYPAIR_PASSWORD}",
+                "passowrd": {
+                    "value": "${SSL_KEYPAIR_PASSWORD}"
+                },
                 "hsmProviderId": 0
             }
         ],
