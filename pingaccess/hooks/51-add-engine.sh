@@ -58,7 +58,7 @@ then
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve key-pair ID"
     echo "############### 1 #################"
     cat "${_out}"
-    jq "${_out}"
+    jq . "${_out}"
     echo ""
     echo "############### 1 #################"
     keypairid=$( jq '.items[] | select(.name=="CONFIG QUERY") | .keyPairId' "${_out}" )
@@ -69,7 +69,7 @@ then
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve key-pair alias"
     echo "############### 2 #################"
     cat "${_out}"
-    jq "${_out}"
+    jq . "${_out}"
     echo ""
     echo "############### 2 #################"
     kpalias=$( jq '.items[] | select(.id=='${keypairid}') | .alias' "${_out}" )
@@ -80,7 +80,7 @@ then
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve certificate ID"
     echo "############### 3 #################"
     cat "${_out}"
-    jq "${_out}"
+    jq . "${_out}"
     echo ""
     echo "############### 3 #################"
     certid=$( jq '.items[] | select(.alias=='${kpalias}' and .keyPair==true) | .id' "${_out}" )
