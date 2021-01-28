@@ -57,7 +57,6 @@ then
     _pa_curl https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/httpsListeners
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve key-pair ID"
     echo "############### 1 #################"
-    cat "${_out}"
     jq . "${_out}"
     echo ""
     echo "############### 1 #################"
@@ -68,7 +67,6 @@ then
     _pa_curl https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/keyPairs
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve key-pair alias"
     echo "############### 2 #################"
-    cat "${_out}"
     jq . "${_out}"
     echo ""
     echo "############### 2 #################"
@@ -79,7 +77,6 @@ then
     _pa_curl  https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/engines/certificates
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve certificate ID"
     echo "############### 3 #################"
-    cat "${_out}"
     jq . "${_out}"
     echo ""
     echo "############### 3 #################"
