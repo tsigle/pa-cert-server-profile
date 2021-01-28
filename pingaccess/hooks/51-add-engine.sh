@@ -80,7 +80,7 @@ then
     jq . "${_out}"
     echo ""
     echo "############### 3 #################"
-    certid=$( jq '.items[] | select(.alias=='${kpalias}' and .keyPair==true) | .id' "${_out}" )
+    certid=$( jq '.items[] | select(.alias=="${kpalias}" and .keyPair==true) | .id' "${_out}" )
     echo "Engine Cert ID:"${certid}
 
     echo "Adding new engine"
