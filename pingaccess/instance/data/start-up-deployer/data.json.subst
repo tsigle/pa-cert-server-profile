@@ -170,9 +170,9 @@
             {
                 "id": 1,
                 "name": "ADMIN",
-                "keyPairId": 1,
+                "keyPairId": 4,
                 "useServerCipherSuiteOrder": true,
-                "restartRequired": true
+                "restartRequired": false
             },
             {
                 "id": 2,
@@ -184,9 +184,16 @@
             {
                 "id": 3,
                 "name": "AGENT",
-                "keyPairId": 3,
+                "keyPairId": 4,
                 "useServerCipherSuiteOrder": true,
-                "restartRequired": true
+                "restartRequired": false
+            },
+            {
+                "id": 4,
+                "name": "CONFIG QUERY",
+                "keyPairId": 4,
+                "useServerCipherSuiteOrder": true,
+                "restartRequired": false
             }
         ],
         "keyPairs": [
