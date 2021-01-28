@@ -67,8 +67,11 @@ then
 
     echo "Retrieving Engine Certificate ID..."
     _pa_curl  https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/engines/certificates
-    jq "${_out}"
     test ${?} -ne 200 && die_on_error 51 "Could not retrieve certificate ID"
+    echo "############### 1 #################"
+    cat "${_out}"
+    jq "${_out}"
+    echo "############### 1 #################"
     certid=$( jq '.items[] | select(.alias=='${kpalias}' and .keyPair==true) | .id' "${_out}" )
     echo "Engine Cert ID:"${certid}
 
