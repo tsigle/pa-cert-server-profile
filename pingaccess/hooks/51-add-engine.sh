@@ -61,7 +61,7 @@ then
     echo ""
     echo "############### 1 #################"
     keypairid=$( jq '.items[] | select(.name=="CONFIG QUERY") | .keyPairId' "${_out}" )
-    echo "KeyPairId:"${keypairid}
+    echo "KeyPairId:${keypairid}"
 
     echo "Retrieving the Key Pair alias..."
     _pa_curl https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/keyPairs
@@ -70,8 +70,8 @@ then
     jq . "${_out}"
     echo ""
     echo "############### 2 #################"
-    kpalias=$( jq '.items[] | select(.id=='${keypairid}') | .alias' "${_out}" )
-    echo "Key Pair Alias:"${kpalias}
+    kpalias=$( jq -r '.items[] | select(.id=='${keypairid}') | .alias' "${_out}" )
+    echo "Key Pair Alias:${kpalias}"
 
     echo "Retrieving Engine Certificate ID..."
     _pa_curl  https://${pahost}:${PA_ADMIN_PORT}/pa-admin-api/v3/engines/certificates
@@ -80,7 +80,7 @@ then
     jq . "${_out}"
     echo ""
     echo "############### 3 #################"
-    certid=$( jq '.items[] | select(.alias=="${kpalias}" and .keyPair==true) | .id' "${_out}" )
+    certid=$( jq '.items[] | select(.alias=='${kpalias}' and .keyPair==true) | .id' "${_out}" )
     echo "Engine Cert ID:"${certid}
 
     echo "Adding new engine"
